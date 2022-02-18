@@ -700,7 +700,7 @@ var external_axios_ = __webpack_require__(2376);
 var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
 ;// CONCATENATED MODULE: ./src/http/index.js
 
-const API_URL = 'http://navalista.tk:5000/api/';
+const API_URL = 'https://navalista.tk:5000/api/';
 const $api = external_axios_default().create({
   withCredentials: true,
   baseURL: API_URL
@@ -718,7 +718,7 @@ $api.interceptors.response.use(config => {
     originalRequest._isRetry = true;
 
     try {
-      const response = await external_axios_default().get('http://navalista.tk:5000/api/refresh', {
+      const response = await external_axios_default().get('https://navalista.tk:5000/api/refresh', {
         withCredentials: true
       });
       localStorage.setItem('token', response.data.accessToken);
