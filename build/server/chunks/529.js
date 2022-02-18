@@ -878,7 +878,7 @@ class Store {
     this.setLoading(true);
 
     try {
-      const response = await external_axios_default().get('http://localhost:5000/api/refresh', {
+      const response = await external_axios_default().get('https://navalista.tk:5000/api/refresh', {
         withCredentials: true
       });
       localStorage.setItem('token', response.data.accessToken);
