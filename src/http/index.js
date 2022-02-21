@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const API_URL = 'https://navalista.tk:5000/api/'
+export const API_URL = 'https://navalista.com:5000/api/'
 
 const $api = axios.create({
 	withCredentials: true,
@@ -19,7 +19,7 @@ $api.interceptors.response.use((config) => {
 	if (error.response.status == 401 && error.config && !error._isRetry) {
 		originalRequest._isRetry = true;
 		try {
-			const response = await axios.get('https://navalista.tk:5000/api/refresh', { withCredentials: true });
+			const response = await axios.get('https://navalista.com:5000/api/refresh', { withCredentials: true });
 			localStorage.setItem('token', response.data.accessToken);
 			return $api.request(originalRequest);
 		} catch (e) {
