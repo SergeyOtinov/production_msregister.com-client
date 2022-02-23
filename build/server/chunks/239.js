@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _adminSetting_module_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_adminSetting_module_css__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9297);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4890);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8975);
 /* harmony import */ var _HOC_Portal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(899);
 /* harmony import */ var _changeAdminPasswordForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4829);
 /* harmony import */ var _mui_icons_material_SaveOutlined__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7269);

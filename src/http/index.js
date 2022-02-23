@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const API_URL = 'https://www.msregister.com:5000/api/'
+// export const API_URL = 'http://localhost:5000/api/'
 
 const $api = axios.create({
 	withCredentials: true,
@@ -20,6 +21,7 @@ $api.interceptors.response.use((config) => {
 		originalRequest._isRetry = true;
 		try {
 			const response = await axios.get('https://www.msregister.com:5000/api/refresh', { withCredentials: true });
+			// const response = await axios.get('http://localhost:5000/api/refresh', { withCredentials: true });
 			localStorage.setItem('token', response.data.accessToken);
 			return $api.request(originalRequest);
 		} catch (e) {

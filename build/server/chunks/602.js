@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _mui_icons_material_Send__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4827);
 /* harmony import */ var _mui_icons_material_Send__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_Send__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4890);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8975);
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8035);
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_mui_material_styles__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2965);
@@ -259,6 +259,33 @@ function SubmitFrom() {
     }
   }
 
+  async function requestElma() {
+    const requestBody = {
+      context: {
+        user_email: "test@test.ua",
+        imo: "1111111",
+        vessel_name: "Vessel Name",
+        company_name: "Company",
+        __target: "website"
+      }
+    };
+    const request = await store.requestElma(requestBody); // if (validate()) {
+    // 	if (!loading) {
+    // 		setLoading(true);
+    // 	}
+    // 	const request = await store.requestElma({});
+    // 	setTimeout(() => {
+    // 		setSuccessMessage("Email sent successfully!")
+    // 		setLoading(false);
+    // 		setTimeout(() => {
+    // 			setSuccessMessage('')
+    // 		}, 2000)
+    // 	}, 1000)
+    // }
+
+    console.log(request.success);
+  }
+
   return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
     children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx("div", {
       className: (_submitForm_module_css__WEBPACK_IMPORTED_MODULE_8___default().wrapper),
@@ -370,7 +397,7 @@ function SubmitFrom() {
                 }
               }),
               disabled: loading,
-              onClick: sendMail,
+              onClick: requestElma,
               children: ["Send", loading && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_1__.CircularProgress, {
                 size: 20,
                 sx: {

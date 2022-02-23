@@ -1,6 +1,7 @@
 import axios from 'axios';
 import AuthService from '../services/AuthServices'
 import UserService from '../services/UserServices'
+import RequestService from '../services/RequestServices'
 import { makeAutoObservable } from 'mobx';
 
 export default class Store {
@@ -60,6 +61,7 @@ export default class Store {
 		this.setLoading(true);
 		try {
 			const response = await axios.get('https://www.msregister.com:5000/api/refresh', { withCredentials: true });
+			// const response = await axios.get('https://localhost:5000/api/refresh', { withCredentials: true });
 			localStorage.setItem('token', response.data.accessToken);
 			this.setAuth(true);
 			this.setUser(response.data.user);
@@ -139,6 +141,15 @@ export default class Store {
 		try {
 			const result = await UserService.sendMail(mailBody);
 			return result.data;
+		} catch (e) {
+			return e.response?.data?.message;
+		}
+	}
+
+	async requestElma(requestBody) {
+		try {
+			const result = await RequestService.requestElma(requestBody);
+			return result;
 		} catch (e) {
 			return e.response?.data?.message;
 		}

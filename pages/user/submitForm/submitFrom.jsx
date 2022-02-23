@@ -161,6 +161,33 @@ function SubmitFrom() {
 		}
 	}
 
+	async function requestElma() {
+		const requestBody = {
+			context: {
+				user_email: "test@test.ua",
+				imo: "1111111",
+				vessel_name: "Vessel Name",
+				company_name: "Company",
+				__target: "website"
+			}
+		}
+		const request = await store.requestElma(requestBody);
+		// if (validate()) {
+		// 	if (!loading) {
+		// 		setLoading(true);
+		// 	}
+		// 	const request = await store.requestElma({});
+		// 	setTimeout(() => {
+		// 		setSuccessMessage("Email sent successfully!")
+		// 		setLoading(false);
+		// 		setTimeout(() => {
+		// 			setSuccessMessage('')
+		// 		}, 2000)
+		// 	}, 1000)
+		// }
+		console.log(request.success)
+	}
+
 	return (
 		<>
 			<div className={st.wrapper}>
@@ -255,7 +282,7 @@ function SubmitFrom() {
 									}}
 								/>}
 								disabled={loading}
-								onClick={sendMail}
+								onClick={requestElma}
 							>
 								Send
 								{loading && <CircularProgress size={20}
