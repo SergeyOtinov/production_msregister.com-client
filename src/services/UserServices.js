@@ -32,4 +32,8 @@ export default class UserService {
 	static async fetchUsers() {
 		return $api.get('/users')
 	}
+
+	static async requestElma(requestBody) {
+		return $api.post('/request-elma', { requestBody })
+	}
 }

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import AuthService from '../services/AuthServices'
 import UserService from '../services/UserServices'
-import RequestService from '../services/RequestServices'
 import { makeAutoObservable } from 'mobx';
 
 export default class Store {
@@ -148,7 +147,7 @@ export default class Store {
 
 	async requestElma(requestBody) {
 		try {
-			const result = await RequestService.requestElma(requestBody);
+			const result = await UserService.requestElma(requestBody);
 			return result;
 		} catch (e) {
 			return e.response?.data?.message;
