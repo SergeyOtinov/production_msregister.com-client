@@ -815,7 +815,7 @@ const RequestServices_$api = external_axios_default().create({
     "Content-Type": "application/json"
   },
   withCredentials: true,
-  baseURL: "http://195.64.240.218/pub/v1/bpm/template/ships/registration_of_survey_work/run"
+  baseURL: "https://195.64.240.218/pub/v1/bpm/template/ships/registration_of_survey_work/run"
 });
 class RequestService {
   static async requestElma(requestBody) {
