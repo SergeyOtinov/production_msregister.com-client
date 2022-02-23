@@ -269,21 +269,31 @@ function SubmitFrom() {
         __target: "website"
       }
     };
-    const request = await store.requestElma(requestBody); // if (validate()) {
-    // 	if (!loading) {
-    // 		setLoading(true);
-    // 	}
-    // 	const request = await store.requestElma({});
-    // 	setTimeout(() => {
-    // 		setSuccessMessage("Email sent successfully!")
-    // 		setLoading(false);
-    // 		setTimeout(() => {
-    // 			setSuccessMessage('')
-    // 		}, 2000)
-    // 	}, 1000)
-    // }
+    const request = await store.requestElma(requestBody);
 
-    console.log(request);
+    if (validate()) {
+      if (!loading) {
+        setLoading(true);
+      }
+
+      const request = await store.requestElma({
+        context: {
+          user_email: mail.current.value,
+          imo: imo,
+          vessel_name: vessel,
+          company_name: company,
+          __target: "website"
+        }
+      });
+      setTimeout(() => {
+        setSuccessMessage("Request sent successfully!");
+        setLoading(false);
+        setTimeout(() => {
+          setSuccessMessage('');
+        }, 2000);
+      }, 1000);
+      console.log(request);
+    }
   }
 
   return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
