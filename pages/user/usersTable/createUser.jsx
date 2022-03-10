@@ -4,13 +4,16 @@ import DoDisturbAltOutlinedIcon from '@mui/icons-material/DoDisturbAltOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import CircularProgress from '@mui/material/CircularProgress';
 import EmailValidator from 'email-validator';
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
+import ReplayCircleFilledIcon from '@mui/icons-material/ReplayCircleFilled';
 import { Context } from '../../_app'
 import { observer } from 'mobx-react-lite';
 
 function CreateUser({ setCreateForm, getUsers, logging, table, currentPage }) {
 	const { store } = useContext(Context)
+
+	const useridField = useRef(null)
 
 	const [userid, setUserid] = useState('')
 	const [email, setEmail] = useState('')
@@ -82,15 +85,32 @@ function CreateUser({ setCreateForm, getUsers, logging, table, currentPage }) {
 		await getUsers(currentPage)
 		setCreateForm(false)
 	}
+
+	function generateID() {
+		const userdArr = Array.from(table.current.querySelectorAll("input[name='userid']")).map(id => id.defaultValue)
+		let uniqueID = 1;
+		for (let i = 0; i < 9; i++) {
+			if (uniqueID !== +userdArr[i]) {
+				const digitsCount = uniqueID.toString().length
+				let nullCount = '0'.repeat(6 - digitsCount),
+					useridNew = nullCount + uniqueID
+				setUserid(useridNew)
+				return
+			}
+			uniqueID += 1;
+		}
+	}
+
 	return (
 		<>
 			<div className={st.wrapper}>
 				<form autoComplete='off' className={st.form}>
 					<h2>Create User Form</h2>
-					<TextField onInput={e => {
-						e.target.value = e.target.value.replace(/[^\d.]/g, '');
-						setUserid(e.target.value)
-					}}
+					<TextField ref={useridField}
+						onInput={e => {
+							e.target.value = e.target.value.replace(/[^\d.]/g, '');
+							setUserid(e.target.value)
+						}}
 						error={!!errorLogin}
 						inputProps={{ maxLength: 6 }}
 						autoComplete="userid"
@@ -99,6 +119,7 @@ function CreateUser({ setCreateForm, getUsers, logging, table, currentPage }) {
 						helperText={errorLogin ? errorLogin : "Enter user ID"}
 						sx={{ marginBottom: '15px' }}
 						size='small' label="User ID"
+						value={userid ? userid : ''}
 						variant="outlined" />
 					<TextField onInput={e => setEmail(e.target.value)}
 						error={!!errorEmail}
@@ -106,18 +127,37 @@ function CreateUser({ setCreateForm, getUsers, logging, table, currentPage }) {
 						name="email"
 						required
 						helperText={errorEmail ? errorEmail : "Enter user e-mail"}
-						sx={{ marginBottom: '15px' }}
+						sx={{
+							position: 'relative',
+							marginBottom: '15px'
+						}}
 						size='small' label="E-Mail"
 						variant="outlined" />
+					<IconButton sx={{
+						position: "absolute",
+						padding: "4px",
+						right: '42px',
+						top: '55px'
+					}}
+						onClick={generateID}
+						onMouseDown={e => e.preventDefault()}
+						edge="end"
+						title="Generate unique ID"
+					>
+						<ReplayCircleFilledIcon />
+					</IconButton>
 					<FormControl size='small' sx={{ marginBottom: '15px' }} variant="outlined">
 						<InputLabel>Password</InputLabel>
-						<OutlinedInput onInput={e => setPassword(e.target.value)}
+						<OutlinedInput sx={{ paddingRight: "4px" }}
+							onInput={e => setPassword(e.target.value)}
 							type={isShowPassword ? 'text' : 'password'}
 							error={!!errorPassword}
 							endAdornment={
 								<InputAdornment position="end">
-									<IconButton
-										aria-label="toggle password visibility"
+									<IconButton sx={{
+										padding: "4px",
+										marginRight: 0
+									}}
 										onClick={() => isShowPassword ? setShowPassword(false) : setShowPassword(true)}
 										onMouseDown={e => e.preventDefault()}
 										edge="end"
@@ -152,7 +192,6 @@ function CreateUser({ setCreateForm, getUsers, logging, table, currentPage }) {
 							onClick={createUser}>
 							{creating ? <CircularProgress size={20} sx={{ color: '#777777' }} />
 								: <CheckCircleOutlineOutlinedIcon sx={{ color: 'green' }} />}
-
 						</IconButton>
 						<IconButton size='small' title='Cancel' onClick={() => setCreateForm(false)}>
 							<DoDisturbAltOutlinedIcon sx={{

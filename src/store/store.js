@@ -60,7 +60,7 @@ export default class Store {
 		this.setLoading(true);
 		try {
 			const response = await axios.get('https://www.msregister.com:5000/api/refresh', { withCredentials: true });
-			// const response = await axios.get('https://localhost:5000/api/refresh', { withCredentials: true });
+			// const response = await axios.get('http://localhost:5000/api/refresh', { withCredentials: true });
 			localStorage.setItem('token', response.data.accessToken);
 			this.setAuth(true);
 			this.setUser(response.data.user);

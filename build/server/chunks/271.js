@@ -10,8 +10,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _createUser_module_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(4275);
-/* harmony import */ var _createUser_module_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_createUser_module_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _createUser_module_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4275);
+/* harmony import */ var _createUser_module_css__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_createUser_module_css__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mui_icons_material_DoDisturbAltOutlined__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5329);
@@ -26,11 +26,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(1708);
 /* harmony import */ var _mui_icons_material__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4890);
-/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4912);
-/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(5282);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _mui_icons_material_ReplayCircleFilled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2804);
+/* harmony import */ var _mui_icons_material_ReplayCircleFilled__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_ReplayCircleFilled__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4890);
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(4912);
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(5282);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__);
+
 
 
 
@@ -54,7 +57,8 @@ function CreateUser({
 }) {
   const {
     store
-  } = (0,react__WEBPACK_IMPORTED_MODULE_5__.useContext)(_app__WEBPACK_IMPORTED_MODULE_7__.Context);
+  } = (0,react__WEBPACK_IMPORTED_MODULE_5__.useContext)(_app__WEBPACK_IMPORTED_MODULE_8__.Context);
+  const useridField = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
   const {
     0: userid,
     1: setUserid
@@ -168,15 +172,33 @@ function CreateUser({
     setCreateForm(false);
   }
 
-  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx("div", {
-      className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_10___default().wrapper),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+  function generateID() {
+    const userdArr = Array.from(table.current.querySelectorAll("input[name='userid']")).map(id => id.defaultValue);
+    let uniqueID = 1;
+
+    for (let i = 0; i < 9; i++) {
+      if (uniqueID !== +userdArr[i]) {
+        const digitsCount = uniqueID.toString().length;
+        let nullCount = '0'.repeat(6 - digitsCount),
+            useridNew = nullCount + uniqueID;
+        setUserid(useridNew);
+        return;
+      }
+
+      uniqueID += 1;
+    }
+  }
+
+  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx("div", {
+      className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_11___default().wrapper),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("form", {
         autoComplete: "off",
-        className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_10___default().form),
-        children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx("h2", {
+        className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_11___default().form),
+        children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx("h2", {
           children: "Create User Form"
-        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
+        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
+          ref: useridField,
           onInput: e => {
             e.target.value = e.target.value.replace(/[^\d.]/g, '');
             setUserid(e.target.value);
@@ -194,8 +216,9 @@ function CreateUser({
           },
           size: "small",
           label: "User ID",
+          value: userid ? userid : '',
           variant: "outlined"
-        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
+        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
           onInput: e => setEmail(e.target.value),
           error: !!errorEmail,
           autoComplete: "email",
@@ -203,40 +226,59 @@ function CreateUser({
           required: true,
           helperText: errorEmail ? errorEmail : "Enter user e-mail",
           sx: {
+            position: 'relative',
             marginBottom: '15px'
           },
           size: "small",
           label: "E-Mail",
           variant: "outlined"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_0__.FormControl, {
+        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
+          sx: {
+            position: "absolute",
+            padding: "4px",
+            right: '42px',
+            top: '55px'
+          },
+          onClick: generateID,
+          onMouseDown: e => e.preventDefault(),
+          edge: "end",
+          title: "Generate unique ID",
+          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx((_mui_icons_material_ReplayCircleFilled__WEBPACK_IMPORTED_MODULE_7___default()), {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_mui_material__WEBPACK_IMPORTED_MODULE_0__.FormControl, {
           size: "small",
           sx: {
             marginBottom: '15px'
           },
           variant: "outlined",
-          children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.InputLabel, {
+          children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.InputLabel, {
             children: "Password"
-          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.OutlinedInput, {
+          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.OutlinedInput, {
+            sx: {
+              paddingRight: "4px"
+            },
             onInput: e => setPassword(e.target.value),
             type: isShowPassword ? 'text' : 'password',
             error: !!errorPassword,
-            endAdornment: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.InputAdornment, {
+            endAdornment: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.InputAdornment, {
               position: "end",
-              children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
-                "aria-label": "toggle password visibility",
+              children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
+                sx: {
+                  padding: "4px",
+                  marginRight: 0
+                },
                 onClick: () => isShowPassword ? setShowPassword(false) : setShowPassword(true),
                 onMouseDown: e => e.preventDefault(),
                 edge: "end",
-                children: isShowPassword ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__.VisibilityOff, {}) : /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__.Visibility, {})
+                children: isShowPassword ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__.VisibilityOff, {}) : /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_icons_material__WEBPACK_IMPORTED_MODULE_6__.Visibility, {})
               })
             }),
             label: "Password"
-          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.FormHelperText, {
+          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.FormHelperText, {
             error: !!errorPassword,
             variant: "outlined",
             children: errorPassword ? errorPassword : 'Enter user password'
           })]
-        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
+        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
           onInput: e => setName(e.target.value),
           autoComplete: "name",
           name: "name",
@@ -247,7 +289,7 @@ function CreateUser({
           size: "small",
           label: "Name",
           variant: "outlined"
-        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
+        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.TextField, {
           onInput: e => setSurname(e.target.value),
           autoComplete: "none",
           name: "surname",
@@ -255,35 +297,35 @@ function CreateUser({
           size: "small",
           label: "Surname",
           variant: "outlined"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-          className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_10___default().buttons),
-          children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+          className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_11___default().buttons),
+          children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
             disabled: creating,
             size: "small",
             title: "Accept",
             onClick: createUser,
-            children: creating ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx((_mui_material_CircularProgress__WEBPACK_IMPORTED_MODULE_3___default()), {
+            children: creating ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx((_mui_material_CircularProgress__WEBPACK_IMPORTED_MODULE_3___default()), {
               size: 20,
               sx: {
                 color: '#777777'
               }
-            }) : /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx((_mui_icons_material_CheckCircleOutlineOutlined__WEBPACK_IMPORTED_MODULE_2___default()), {
+            }) : /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx((_mui_icons_material_CheckCircleOutlineOutlined__WEBPACK_IMPORTED_MODULE_2___default()), {
               sx: {
                 color: 'green'
               }
             })
-          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
+          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_0__.IconButton, {
             size: "small",
             title: "Cancel",
             onClick: () => setCreateForm(false),
-            children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx((_mui_icons_material_DoDisturbAltOutlined__WEBPACK_IMPORTED_MODULE_1___default()), {
+            children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx((_mui_icons_material_DoDisturbAltOutlined__WEBPACK_IMPORTED_MODULE_1___default()), {
               sx: {
                 color: 'red'
               }
             })
           })]
-        }), errorMessage && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx("p", {
-          className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_10___default().error),
+        }), errorMessage && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx("p", {
+          className: (_createUser_module_css__WEBPACK_IMPORTED_MODULE_11___default().error),
           children: errorMessage
         })]
       })
@@ -291,7 +333,7 @@ function CreateUser({
   });
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,mobx_react_lite__WEBPACK_IMPORTED_MODULE_8__.observer)(CreateUser));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,mobx_react_lite__WEBPACK_IMPORTED_MODULE_9__.observer)(CreateUser));
 
 /***/ }),
 
