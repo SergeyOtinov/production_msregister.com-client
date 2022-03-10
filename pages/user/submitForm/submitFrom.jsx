@@ -1,6 +1,6 @@
 import st from './submitForm.module.css';
 import { useContext, useRef, useState } from 'react';
-import { TextareaAutosize, Checkbox, TextField, Button, Box, InputAdornment, InputLabel, FormControl, OutlinedInput, FormHelperText, FormGroup, FormControlLabel } from '@mui/material';
+import { TextareaAutosize, Checkbox, TextField, Button, Box, FormControl, FormHelperText, FormGroup, FormControlLabel } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Context } from '../../_app';
@@ -61,8 +61,8 @@ function SubmitFrom() {
 	const [vessel, setVessel] = useState('')
 	const [imo, setImo] = useState('')
 
-	const [errorMessagePhone, setErrorMessagePhone] = useState('')
-	const [errorMessageName, setErrorMessageName] = useState('')
+	// const [errorMessagePhone, setErrorMessagePhone] = useState('')
+	// const [errorMessageName, setErrorMessageName] = useState('')
 	const [errorMessageCompany, setErrorMessageCompany] = useState('')
 	const [errorMessageRequest, setErrorMessageRequest] = useState('')
 	const [errorMessageVessel, setErrorMessageVessel] = useState('')
@@ -72,20 +72,20 @@ function SubmitFrom() {
 	const [successMessage, setSuccessMessage] = useState(false);
 
 	function validate() {
-		setErrorMessagePhone('')
-		setErrorMessageName('')
+		// setErrorMessagePhone('')
+		// setErrorMessageName('')
 		setErrorMessageCompany('')
 		setErrorMessageRequest('')
 		setErrorMessageVessel('')
 		setErrorMessageImo('')
-		if (!phone) {
-			setErrorMessagePhone('The Phone field cannot be empty!')
-			return false
-		}
-		if (!name) {
-			setErrorMessageName('The Name field cannot be empty!')
-			return false
-		}
+		// if (!phone) {
+		// 	setErrorMessagePhone('The Phone field cannot be empty!')
+		// 	return false
+		// }
+		// if (!name) {
+		// 	setErrorMessageName('The Name field cannot be empty!')
+		// 	return false
+		// }
 		if (!company) {
 			setErrorMessageCompany('The Company Name field cannot be empty!')
 			return false
@@ -112,66 +112,7 @@ function SubmitFrom() {
 		return true
 	}
 
-	async function sendMail() {
-		let fields = '';
-		const data = [{ mail: mail.current.value }, { phone: phone }, { name: name }, { company: company }, { request: request }, { vessel: vessel }, { imo: imo }].filter(key => !!Object.values(key)[0])
-		data.map(field => {
-			const key = Object.keys(field)[0]
-			const value = Object.values(field)[0]
-			return fields += `
-			<tr>
-				<td
-					style='text-transform: uppercase;border-color:#9b9b9b;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;font-weight:bold;text-align:left;vertical-align:middle;'>
-					${key} :
-				</td>
-				<td
-					style='border-color:#9b9b9b;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;overflow:hidden;padding:10px 5px;word-break:normal;background-color:#efefef;color:#003d63;text-align:left;vertical-align:top;'>
-					${value}
-				</td>
-			</tr>
-			`
-		})
-		const mailBody = `
-		<table style='min-width: 400px;border-collapse: collapse;border-spacing: 0;'>
-			<thead>
-				<tr>
-					<th colspan='2'
-						style='border-color:#9b9b9b;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;font-weight:bold;overflow:hidden;padding:10px 5px;word-break:normal;text-align:center;vertical-align:top;'>
-					CUSTOMER DATA:
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-			${fields}
-			</tbody>
-		</table>
-		`
-		if (validate()) {
-			if (!loading) {
-				setLoading(true);
-			}
-			const result = await store.sendMail(mailBody)
-			setTimeout(() => {
-				setSuccessMessage(result)
-				setLoading(false);
-				setTimeout(() => {
-					setSuccessMessage('')
-				}, 2000)
-			}, 1000)
-		}
-	}
-
 	async function requestElma() {
-		const requestBody = {
-			context: {
-				user_email: "test@test.ua",
-				imo: "1111111",
-				vessel_name: "Vessel Name",
-				company_name: "Company",
-				__target: "website"
-			}
-		}
-		const request = await store.requestElma(requestBody);
 		if (validate()) {
 			if (!loading) {
 				setLoading(true);
@@ -182,7 +123,8 @@ function SubmitFrom() {
 					imo: imo,
 					vessel_name: vessel,
 					company_name: company,
-					__target: "website"
+					__target: "website",
+					request_text: request
 				}
 			});
 			setTimeout(() => {
@@ -209,7 +151,7 @@ function SubmitFrom() {
 							helperText="Your E-mail"
 							defaultValue={user.email}
 							size='small' label="E-mail" />
-						<TextField
+						{/* <TextField
 							onInput={e => {
 								e.target.value = e.target.value.replace(/[^\d\+\(\)\-]/g, '');
 								setPhone(e.target.value)
@@ -223,7 +165,7 @@ function SubmitFrom() {
 							required={true}
 							error={!!errorMessageName}
 							helperText={errorMessageName ? errorMessageName : "Your Name"}
-							size='small' label="Name" />
+							size='small' label="Name" /> */}
 						<TextField
 							onInput={e => setCompany(e.target.value)}
 							required={true}

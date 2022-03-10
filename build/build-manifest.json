@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/vjbuUZXNwmSPmvG1H55J-/_buildManifest.js",
-    "static/vjbuUZXNwmSPmvG1H55J-/_ssgManifest.js"
+    "static/glWeEIbRmkb69m1qSrCPl/_buildManifest.js",
+    "static/glWeEIbRmkb69m1qSrCPl/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -134,7 +134,7 @@
       "static/chunks/264-e08d68e1dfb301a63a4e.js",
       "static/chunks/461-cd668116eab759e84ab6.js",
       "static/css/23cb396bb5c39651645b.css",
-      "static/chunks/pages/user/[id]-00c7ca2fa719a99ff56b.js"
+      "static/chunks/pages/user/[id]-7e0e90534562a9109936.js"
     ],
     "/user/submitForm/submitFrom": [
       "static/chunks/webpack-5892ecdb03bc847db322.js",
@@ -142,7 +142,7 @@
       "static/chunks/main-60b877ecb26590db3d01.js",
       "static/chunks/264-e08d68e1dfb301a63a4e.js",
       "static/css/6a91703a9298f4a2573d.css",
-      "static/chunks/pages/user/submitForm/submitFrom-881ab012f004a79c6dd5.js"
+      "static/chunks/pages/user/submitForm/submitFrom-c04fc7f7c68fe947be35.js"
     ],
     "/user/usersTable/adminSetting": [
       "static/chunks/webpack-5892ecdb03bc847db322.js",

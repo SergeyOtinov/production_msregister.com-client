@@ -112,15 +112,9 @@ function SubmitFrom() {
   const {
     0: imo,
     1: setImo
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const {
-    0: errorMessagePhone,
-    1: setErrorMessagePhone
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const {
-    0: errorMessageName,
-    1: setErrorMessageName
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''); // const [errorMessagePhone, setErrorMessagePhone] = useState('')
+  // const [errorMessageName, setErrorMessageName] = useState('')
+
   const {
     0: errorMessageCompany,
     1: setErrorMessageCompany
@@ -147,22 +141,19 @@ function SubmitFrom() {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
   function validate() {
-    setErrorMessagePhone('');
-    setErrorMessageName('');
+    // setErrorMessagePhone('')
+    // setErrorMessageName('')
     setErrorMessageCompany('');
     setErrorMessageRequest('');
     setErrorMessageVessel('');
-    setErrorMessageImo('');
-
-    if (!phone) {
-      setErrorMessagePhone('The Phone field cannot be empty!');
-      return false;
-    }
-
-    if (!name) {
-      setErrorMessageName('The Name field cannot be empty!');
-      return false;
-    }
+    setErrorMessageImo(''); // if (!phone) {
+    // 	setErrorMessagePhone('The Phone field cannot be empty!')
+    // 	return false
+    // }
+    // if (!name) {
+    // 	setErrorMessageName('The Name field cannot be empty!')
+    // 	return false
+    // }
 
     if (!company) {
       setErrorMessageCompany('The Company Name field cannot be empty!');
@@ -194,83 +185,7 @@ function SubmitFrom() {
     return true;
   }
 
-  async function sendMail() {
-    let fields = '';
-    const data = [{
-      mail: mail.current.value
-    }, {
-      phone: phone
-    }, {
-      name: name
-    }, {
-      company: company
-    }, {
-      request: request
-    }, {
-      vessel: vessel
-    }, {
-      imo: imo
-    }].filter(key => !!Object.values(key)[0]);
-    data.map(field => {
-      const key = Object.keys(field)[0];
-      const value = Object.values(field)[0];
-      return fields += `
-			<tr>
-				<td
-					style='text-transform: uppercase;border-color:#9b9b9b;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;font-weight:bold;text-align:left;vertical-align:middle;'>
-					${key} :
-				</td>
-				<td
-					style='border-color:#9b9b9b;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;overflow:hidden;padding:10px 5px;word-break:normal;background-color:#efefef;color:#003d63;text-align:left;vertical-align:top;'>
-					${value}
-				</td>
-			</tr>
-			`;
-    });
-    const mailBody = `
-		<table style='min-width: 400px;border-collapse: collapse;border-spacing: 0;'>
-			<thead>
-				<tr>
-					<th colspan='2'
-						style='border-color:#9b9b9b;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:16px;font-weight:bold;overflow:hidden;padding:10px 5px;word-break:normal;text-align:center;vertical-align:top;'>
-					CUSTOMER DATA:
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-			${fields}
-			</tbody>
-		</table>
-		`;
-
-    if (validate()) {
-      if (!loading) {
-        setLoading(true);
-      }
-
-      const result = await store.sendMail(mailBody);
-      setTimeout(() => {
-        setSuccessMessage(result);
-        setLoading(false);
-        setTimeout(() => {
-          setSuccessMessage('');
-        }, 2000);
-      }, 1000);
-    }
-  }
-
   async function requestElma() {
-    const requestBody = {
-      context: {
-        user_email: "test@test.ua",
-        imo: "1111111",
-        vessel_name: "Vessel Name",
-        company_name: "Company",
-        __target: "website"
-      }
-    };
-    const request = await store.requestElma(requestBody);
-
     if (validate()) {
       if (!loading) {
         setLoading(true);
@@ -282,7 +197,8 @@ function SubmitFrom() {
           imo: imo,
           vessel_name: vessel,
           company_name: company,
-          __target: "website"
+          __target: "website",
+          request_text: request
         }
       });
       setTimeout(() => {
@@ -314,23 +230,6 @@ function SubmitFrom() {
             defaultValue: user.email,
             size: "small",
             label: "E-mail"
-          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_1__.TextField, {
-            onInput: e => {
-              e.target.value = e.target.value.replace(/[^\d\+\(\)\-]/g, '');
-              setPhone(e.target.value);
-            },
-            required: true,
-            error: !!errorMessagePhone,
-            helperText: errorMessagePhone ? errorMessagePhone : "Your Phone Number",
-            size: "small",
-            label: "Phone"
-          }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_1__.TextField, {
-            onInput: e => setName(e.target.value),
-            required: true,
-            error: !!errorMessageName,
-            helperText: errorMessageName ? errorMessageName : "Your Name",
-            size: "small",
-            label: "Name"
           }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_1__.TextField, {
             onInput: e => setCompany(e.target.value),
             required: true,
