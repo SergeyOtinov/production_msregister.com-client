@@ -54,8 +54,8 @@ function SubmitFrom() {
 	const mail = useRef(null)
 
 	const [isImo, setIsImo] = useState(true)
-	const [phone, setPhone] = useState('')
-	const [name, setName] = useState('')
+	// const [phone, setPhone] = useState('')
+	// const [name, setName] = useState('')
 	const [company, setCompany] = useState('')
 	const [request, setRequest] = useState('')
 	const [vessel, setVessel] = useState('')
@@ -117,7 +117,7 @@ function SubmitFrom() {
 			if (!loading) {
 				setLoading(true);
 			}
-			const request = await store.requestElma({
+			const result = await store.requestElma({
 				context: {
 					user_email: mail.current.value,
 					imo: imo,
@@ -134,7 +134,6 @@ function SubmitFrom() {
 					setSuccessMessage('')
 				}, 2000)
 			}, 1000)
-			console.log(request)
 		}
 	}
 

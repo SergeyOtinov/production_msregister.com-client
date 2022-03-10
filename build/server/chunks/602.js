@@ -88,15 +88,9 @@ function SubmitFrom() {
   const {
     0: isImo,
     1: setIsImo
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  const {
-    0: phone,
-    1: setPhone
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const {
-    0: name,
-    1: setName
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true); // const [phone, setPhone] = useState('')
+  // const [name, setName] = useState('')
+
   const {
     0: company,
     1: setCompany
@@ -191,7 +185,7 @@ function SubmitFrom() {
         setLoading(true);
       }
 
-      const request = await store.requestElma({
+      const result = await store.requestElma({
         context: {
           user_email: mail.current.value,
           imo: imo,
@@ -208,7 +202,6 @@ function SubmitFrom() {
           setSuccessMessage('');
         }, 2000);
       }, 1000);
-      console.log(request);
     }
   }
 
