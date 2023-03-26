@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"dev:ssl":"set NODE_OPTIONS=--openssl-legacy-provider && next dev",
 		"build": "next build",
 		"start": "NODE_ENV=production node server.js"
 	},
