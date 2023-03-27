@@ -4,9 +4,9 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"dev:ssl": "set NODE_OPTIONS=--openssl-legacy-provider && next dev",
-		"build": "set NODE_OPTIONS=--openssl-legacy-provider && next build",
-		"build:ssl": "next build",
+		"build": "next build",
+		"build:windows": "node --max-old-space-size=4096 node_modules/.bin/next build",
+		"build:linux": "node --max-old-space-size=4096 node_modules/next/dist/bin/next build",
 		"start": "NODE_ENV=production node server.js"
 	},
 	"dependencies": {

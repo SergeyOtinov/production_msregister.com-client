@@ -91,6 +91,7 @@ function ServicesContent({ data }) {
                       <>
                         {Array.isArray(row) ? (
                           row.map((r) => {
+                            key++;
                             return (
                               <li
                                 style={{
