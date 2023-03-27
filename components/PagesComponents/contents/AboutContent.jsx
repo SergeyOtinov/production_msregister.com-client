@@ -29,7 +29,7 @@ function AboutContent({ data, pages, aboutPage }) {
 										default:
 											key++
 											return (
-												<Link key={key} href={sentence.link}>
+												<Link key={key} href={sentence.link} legacyBehavior>
 													<a className={st.link}
 														title={"Link to " + sentence.link}
 														rel="external"

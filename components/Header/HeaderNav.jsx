@@ -18,7 +18,7 @@ function HeaderNav(props) {
 	return (
 		<>
 			<div className={st.headerNav}>
-				<Link href='/'>
+				<Link href='/' legacyBehavior>
 					<a title={headerPages[0].title}>
 						<img className={st.logo} src={logo.src} alt='logo' />
 					</a>
@@ -27,7 +27,7 @@ function HeaderNav(props) {
 					{headerPages.map(page => {
 						const { id, href, title } = page
 						return (
-							<Link key={id} href={href}>
+							<Link key={id} href={href} legacyBehavior>
 								<a className={st.link + (router.pathname === page.href ? ` ${st.link__active}` : '')}>
 									{title}
 								</a>
@@ -44,7 +44,7 @@ function HeaderNav(props) {
 						{headerPages.map(page => {
 							const { id, href, title } = page
 							return (
-								<Link key={id} href={href}>
+								<Link key={id} href={href} legacyBehavior>
 									<a>
 										<li data-id={id}>{title}</li>
 									</a>
@@ -55,7 +55,7 @@ function HeaderNav(props) {
 						{asidePages.map(page => {
 							const { id, href, title } = page
 							return (
-								<Link key={headerPages.length + id} href={href}>
+								<Link key={headerPages.length + id} href={href} legacyBehavior>
 									<a>
 										<li data-id={headerPages.length + id}>
 											{title}

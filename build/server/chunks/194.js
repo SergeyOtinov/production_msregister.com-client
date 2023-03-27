@@ -36,6 +36,7 @@ function ErrorScreen() {
             className: (_ErrorScreen_module_css__WEBPACK_IMPORTED_MODULE_2___default().aside),
             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
                 href: "/",
+                legacyBehavior: true,
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                     className: (_ErrorScreen_module_css__WEBPACK_IMPORTED_MODULE_2___default().link),
                     children: "CLICK TO BACK HOME!"

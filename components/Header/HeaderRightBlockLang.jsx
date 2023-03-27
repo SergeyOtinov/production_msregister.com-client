@@ -12,7 +12,7 @@ export default function HeaderRightBlockLang({ store }) {
 	return (
 		<>
 			<img className={st.preloader} src={preloader.src} alt='loading' />
-			<Link href={router.pathname}>
+			<Link href={router.pathname} legacyBehavior>
 				<a>
 					<button onClick={(e) => {
 						store.toggleLanguage(e)

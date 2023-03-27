@@ -77,6 +77,7 @@ function AboutContentSwitcher({ pages , aboutPage  }) {
                     hidden: router.pathname === aboutPage.href,
                     children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                         href: aboutPage.href,
+                        legacyBehavior: true,
                         children: /*#__PURE__*/ jsx_runtime_.jsx("a", {})
                     })
                 }),
@@ -90,6 +91,7 @@ function AboutContentSwitcher({ pages , aboutPage  }) {
                         },
                         children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                             href: page.href,
+                            legacyBehavior: true,
                             children: /*#__PURE__*/ jsx_runtime_.jsx("a", {})
                         })
                     }, page.id);
@@ -142,6 +144,7 @@ function AboutContent({ data , pages , aboutPage  }) {
                                                 key++;
                                                 return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                                                     href: sentence.link,
+                                                    legacyBehavior: true,
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                                         className: (AboutContent_module_default()).link,
                                                         title: "Link to " + sentence.link,

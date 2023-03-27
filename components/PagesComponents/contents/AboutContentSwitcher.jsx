@@ -14,7 +14,7 @@ function AboutContentSwitcher({ pages, aboutPage }) {
 					style={{ backgroundImage: "url(" + `${aboutPage.background}` + ")" }}
 					hidden={router.pathname === aboutPage.href}
 				>
-					<Link href={aboutPage.href}>
+					<Link href={aboutPage.href} legacyBehavior>
 						<a />
 					</Link>
 				</div>
@@ -26,7 +26,7 @@ function AboutContentSwitcher({ pages, aboutPage }) {
 							data-title={page.tip}
 							style={{ backgroundImage: "url(" + `${page.background}` + ")" }}
 						>
-							<Link href={page.href}>
+							<Link href={page.href} legacyBehavior>
 								<a />
 							</Link>
 						</div>

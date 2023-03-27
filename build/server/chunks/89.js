@@ -243,6 +243,7 @@ function HeaderNav(props) {
             children: [
                 /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                     href: "/",
+                    legacyBehavior: true,
                     children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                         title: headerPages[0].title,
                         children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
@@ -258,6 +259,7 @@ function HeaderNav(props) {
                         const { id , href , title  } = page;
                         return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                             href: href,
+                            legacyBehavior: true,
                             children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                 className: (HeaderNav_module_default()).link + (router.pathname === page.href ? ` ${(HeaderNav_module_default()).link__active}` : ""),
                                 children: title
@@ -285,6 +287,7 @@ function HeaderNav(props) {
                                     const { id , href , title  } = page;
                                     return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                                         href: href,
+                                        legacyBehavior: true,
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                             children: /*#__PURE__*/ jsx_runtime_.jsx("li", {
                                                 "data-id": id,
@@ -300,6 +303,7 @@ function HeaderNav(props) {
                                     const { id , href , title  } = page;
                                     return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                                         href: href,
+                                        legacyBehavior: true,
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                             children: /*#__PURE__*/ jsx_runtime_.jsx("li", {
                                                 "data-id": headerPages.length + id,
@@ -417,6 +421,7 @@ function AsideMenu({ store  }) {
                         const { id , href , title  } = page;
                         return /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
                             href: href,
+                            legacyBehavior: true,
                             children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
                                 className: (AsideMenu_module_default()).link + (router.pathname === href ? ` ${(AsideMenu_module_default()).link__active}` : ""),
                                 children: title
