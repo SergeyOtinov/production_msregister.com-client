@@ -5,8 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"build:windows": "node --max-old-space-size=4096 node_modules/.bin/next build",
-		"build:linux": "node --max-old-space-size=4096 node_modules/next/dist/bin/next build",
+		"build:linux": "node --max-old-space-size=500 node_modules/next/dist/bin/next build",
 		"start": "NODE_ENV=production node server.js"
 	},
 	"dependencies": {
@@ -26,9 +25,9 @@
 		"mobx": "^6.3.12",
 		"mobx-react-lite": "^3.2.3",
 		"next": "^13.2.4",
-		"next-images": "^1.8.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"sharp": "^0.32.0",
 		"styled-components": "^5.3.3"
 	}
 }
