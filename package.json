@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
-		"build:linux": "node --max-old-space-size=500 node_modules/next/dist/bin/next build",
+		"build": "build",
+		"build:linux": "node --max-old-space-size=2048 node_modules/next/dist/bin/next build",
 		"start": "NODE_ENV=production node server.js"
 	},
 	"dependencies": {
