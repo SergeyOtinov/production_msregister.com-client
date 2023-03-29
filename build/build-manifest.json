@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/Yb_x7TH5ZBcLqPEHOPe6f/_buildManifest.js",
-    "static/Yb_x7TH5ZBcLqPEHOPe6f/_ssgManifest.js"
+    "static/vlZOyea_bSVBuMPm8rxHM/_buildManifest.js",
+    "static/vlZOyea_bSVBuMPm8rxHM/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -106,20 +106,6 @@
       "static/chunks/main-7477d36a73a3487c.js",
       "static/css/9f1bdc8cc9d7fe3e.css",
       "static/chunks/pages/services/information-18ace16a064153ba.js"
-    ],
-    "/services/ship-classification": [
-      "static/chunks/webpack-87b3a303122f2f0d.js",
-      "static/chunks/framework-2c79e2a64abdb08b.js",
-      "static/chunks/main-7477d36a73a3487c.js",
-      "static/css/9f1bdc8cc9d7fe3e.css",
-      "static/chunks/pages/services/ship-classification-bb91ff846c1276f6.js"
-    ],
-    "/services/statutory-services": [
-      "static/chunks/webpack-87b3a303122f2f0d.js",
-      "static/chunks/framework-2c79e2a64abdb08b.js",
-      "static/chunks/main-7477d36a73a3487c.js",
-      "static/css/9f1bdc8cc9d7fe3e.css",
-      "static/chunks/pages/services/statutory-services-a4c005345a87f582.js"
     ],
     "/services/statutory-surveys-and-other-services": [
       "static/chunks/webpack-87b3a303122f2f0d.js",
